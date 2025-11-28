@@ -1,5 +1,6 @@
 #include "../include/usart.h"
 #include "../include/pin.h"
+#include "../include/usart_debug.h"
 #include <stdint.h>
 #include <avr/delay.h>
 #include <avr/pgmspace.h>
@@ -10,7 +11,7 @@
 #define BUFFER_SIZE 32
 #define ADDR8(reg) (*(volatile uint8_t*))(reg)\
 
-typedef enum {
+/*typedef enum {
     DEBUG, PRINT, err
 }COMMANDS;
 
@@ -54,7 +55,7 @@ COMMANDS receive_command(USART *USARTn) {
          rx_char = USARTn->receive();
     }
     return parse_command(rx_buffer);
-}
+}*/
 
 int run_usart_test() {
 
@@ -63,6 +64,10 @@ int run_usart_test() {
         data_int_mode::dis, rx_mode::en, tx_mode::en, spd_mode::norm);
     
         char letter = 'a';
+        //constexpr pin PIN_C1 = {&DDRC, &PORTC, &PINC, PC1};
+        set_output(PIN_C1);
+        set_output(PIN_G0);
+        high(PIN_G0);
 
     while (1) {
 
@@ -79,6 +84,8 @@ int run_usart_test() {
                 USART0.put_stringP(PSTR("Please enter a valid command"));
                 break;
         }
+
+        //toggle(PIN_C1);
         
         /*if (USART0.receive() == 'a') {
         if (letter <= 'z') {

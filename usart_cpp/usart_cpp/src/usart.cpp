@@ -4,12 +4,12 @@
 #include <stdint.h>
 
 USART::USART(
-        const pin& tx_x,                //tx pin
-        const pin& rx_x,                //rx pin
-        uint16_t ucsrnA_addr,           //A reg addr
-        uint16_t ucsrnB_addr,           //B reg addr
+        const pin& tx_x,            //tx pin
+        const pin& rx_x,            //rx pin
+        uint16_t ucsrnA_addr,   //A reg addr
+        uint16_t ucsrnB_addr,   //B reg addr
         volatile uint16_t ubrrn_addr,   //BR reg addr
-        uint16_t udrn_addr)             //data reg addr
+        uint16_t udrn_addr)     //data reg addr
     : tx_pin(tx_x),
       rx_pin(rx_x),
       UCSRnA(reinterpret_cast<volatile uint8_t*>(ucsrnA_addr)),
@@ -25,10 +25,6 @@ void USART::init(unsigned long baud_rate,
                 tx_mode txEn,
                 spd_mode speed) {
     
-    //config i/o
-    set_output(tx_pin);
-    set_input(rx_pin);
-
     if (rxInt == rx_int_mode::en)
         *UCSRnB |= (1<<RXCIE0);
     else 
@@ -61,7 +57,6 @@ void USART::init(unsigned long baud_rate,
         *UCSRnA &= ~(1<<U2X0);
         BR_PS = 16;
     }
-    //calculate baud rate
     *UBRRn = (unsigned int)((F_CPU / (BR_PS * baud_rate)) - 1);
 }
 

@@ -36,11 +36,14 @@ AVRDUDE    = avrdude
 
 CXXFLAGS   = -std=c++17 -Os -Wall -mmcu=$(MCU) -DF_CPU=$(F_CPU) -I$(INC_DIR)
 CFLAGS     = -Os -Wall -mmcu=$(MCU) -DF_CPU=$(F_CPU) -I$(INC_DIR)
-LDFLAGS    = -mmcu=$(MCU)
+LDFLAGS    = -mmcu=$(MCU) -Wl,--print-memory-usage
 
 # ============================================================
 # Build Targets
 # ============================================================
+
+memusage.txt: $(TARGET).elf
+	avr-size --format=avr --mcu=$(MCU) $(TARGET).elf > memusage.txt
 
 all: $(TARGET).hex
 
