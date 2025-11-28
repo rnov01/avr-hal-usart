@@ -18,10 +18,11 @@ The file pin.h defines a 'pin' struct for hardware-abstracted GPIO access. The '
     - **avr-gcc**
     - **avrdude**
     - **GNU make**
-
+---
 ## Documentation
 
 More information can be found [here](https://rnov01.github.io/avr-hal-usart/index.html)
+
 ---
 
 
