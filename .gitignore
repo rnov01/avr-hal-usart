@@ -1,0 +1,90 @@
+# -----------------------------------------------------------------------------
+# AVR / Makefile Project Gitignore
+# -----------------------------------------------------------------------------
+
+
+# =========================
+# Build artifacts
+# =========================
+*.o
+*.elf
+*.hex
+*.eep
+*.lss
+*.map
+*.sym
+*.bin
+*.srec
+
+# Build directories
+build/
+out/
+dist/
+release/
+debug/
+
+# Temporary intermediate files
+*.d
+*.tmp
+*.bak
+*~
+*.swp
+*.swo
+
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+.history/
+
+# VS Code C/C++ intellisense database
+ipch/
+*.VC.db
+*.VC.VC.opendb
+
+
+# =========================
+# MSYS2 / MinGW / Shell
+# =========================
+*.stackdump
+msys2.ini
+*.msys2/
+*.mingw64/
+*.mingw32/
+
+
+# =========================
+# PlatformIO (if ever present)
+# =========================
+.pio/
+.pioenvs/
+.piolibdeps/
+.clang_complete
+.gcc-flags.json
+
+
+# =========================
+# Backup files
+# =========================
+*.orig
+*.rej
+
+
+# =========================
+# Mac / Windows junk
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# =========================
+# Private user files
+# =========================
+*.log
+
+# =========================
+# Platform IO environment
+# =========================
+/PIO
